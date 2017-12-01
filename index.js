@@ -58,8 +58,6 @@ function handleReceivedData(mostRecentData) {
             writeToHistory(mostRecentData);
         }
     }
-
-    history = {"members": {}};
 }
 
 function detectChanges(MostRecentData) {
