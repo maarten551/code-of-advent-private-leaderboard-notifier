@@ -1,3 +1,9 @@
 {
-    "username": "maarten551"
+    "request_rate_in_seconds": 300,
+    "history_location": "history.json",
+    "connection": {
+        "host": "adventofcode.com",
+        "path": "/2017/leaderboard/private/view/{ID}.json",
+        "session_cookie": "{SESSIONID}"
+    }
 }

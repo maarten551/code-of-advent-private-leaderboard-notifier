@@ -9,6 +9,10 @@ startApplication();
 function startApplication() {
     retrieveHistory();
     receiveLatestData();
+
+    setInterval(() => {
+        receiveLatestData();
+    }, settings.request_rate_in_seconds * 1000);
 }
 
 function retrieveHistory() {
@@ -54,6 +58,8 @@ function handleReceivedData(mostRecentData) {
             writeToHistory(mostRecentData);
         }
     }
+
+    history = {"members": {}};
 }
 
 function detectChanges(MostRecentData) {
