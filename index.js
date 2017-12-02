@@ -60,11 +60,11 @@ function handleReceivedData(mostRecentData) {
     }
 }
 
-function detectChanges(MostRecentData) {
+function detectChanges(mostRecentData) {
     const changes = [];
 
-    Object.keys(MostRecentData.members).forEach((memberId) => {
-        const memberOfResults = MostRecentData.members[memberId];
+    Object.keys(mostRecentData.members).forEach((memberId) => {
+        const memberOfResults = mostRecentData.members[memberId];
 
         // Make sure comparing doesn't brake on non-existing values
         if (!history.members.hasOwnProperty(memberId))
@@ -95,8 +95,8 @@ function notifyUser(changes, mostRecentData) {
     });
 }
 
-function calculateScoreLeaderNameWithAmount(MostRecentData) {
-    const values = Object.keys(MostRecentData.members).map(key => MostRecentData.members[key]);
+function calculateScoreLeaderNameWithAmount(mostRecentData) {
+    const values = Object.keys(mostRecentData.members).map(key => mostRecentData.members[key]);
     return values.reduce((previousValue, currentValue) => {
         if (currentValue.local_score > previousValue.local_score)
             return currentValue;
@@ -105,6 +105,7 @@ function calculateScoreLeaderNameWithAmount(MostRecentData) {
     });
 }
 
-function writeToHistory(MostRecentData) {
-    fs.writeFileSync(settings.history_location, JSON.stringify(MostRecentData))
+function writeToHistory(mostRecentData) {
+    fs.writeFileSync(settings.history_location, JSON.stringify(mostRecentData));
+    history = mostRecentData;
 }
